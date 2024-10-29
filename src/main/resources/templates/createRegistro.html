@@ -24,7 +24,7 @@
 </script>
 <body>
     <h1>Create Parking Register</h1>
-    <form th:action="@{/save}" th:object="${createParkingDTO}" method="post">
+    <form th:action="@{/parking/save/}" th:object="${createParkingDTO}" method="post">
         <div>
             <label for="placa">Placa:</label>
             <input type="text" id="placa" th:field="*{placa}" oninput="validatePlacaInput(event)" required />

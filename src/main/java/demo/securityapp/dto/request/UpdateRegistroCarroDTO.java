@@ -8,9 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateRegistroCarroDTO {
+public class UpdateRegistroCarroDTO {
+
     private String placa;
     private Long fechaEntrada;
+    private Long fechaSalida;
     private String ubicacion;
     private TypeCarEntity typeCarEntity;
 }

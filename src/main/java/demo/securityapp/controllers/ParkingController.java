@@ -1,6 +1,7 @@
 package demo.securityapp.controllers;
 
 import demo.securityapp.dto.request.CreateRegistroCarroDTO;
+import demo.securityapp.dto.request.UpdateRegistroCarroDTO;
 import demo.securityapp.services.ParkingRegisterServices;
 import demo.securityapp.services.TypeCarServices;
 import io.swagger.v3.oas.annotations.Operation;
@@ -88,7 +89,7 @@ public class ParkingController {
     @Operation(summary = "Pagina de edicion de registro de parqueo", description = "Muestra una pagina para  editar un registro de parqueo completamente, no solo la ubicacion.")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String showEditParkingForm(@PathVariable String placa, Model model){
-        CreateRegistroCarroDTO parking = parkingRegisterServices.getParkingRegisterByPlaca(placa);
+        UpdateRegistroCarroDTO parking = parkingRegisterServices.getParkingRegisterByPlacaToUpdate(placa);
         model.addAttribute("parking", parking);
         model.addAttribute("typeCar", typeCarServices.getAllTypeCars());
         return "editRegistroAll";
@@ -96,8 +97,8 @@ public class ParkingController {
     @PostMapping("/update/all/{placa}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Editar un registro de parqueo", description = "Permite editar un registro de parqueo completo, no solo la ubicacion.")
-    public String updateParkingRegisterAll(@PathVariable String placa, @ModelAttribute CreateRegistroCarroDTO createRegistroCarroDTO){
-        parkingRegisterServices.updateParkingRegisterAll(placa, createRegistroCarroDTO);
+    public String updateParkingRegisterAll(@PathVariable String placa, @ModelAttribute UpdateRegistroCarroDTO updateRegistroCarroDTO){
+        parkingRegisterServices.updateParkingRegisterAll(placa, updateRegistroCarroDTO);
         return "redirect:/parking";
     }
 
