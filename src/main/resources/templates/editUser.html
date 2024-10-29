@@ -19,7 +19,7 @@
             <select id="roles" multiple>
                 <option value="USER" th:selected="${#lists.contains(user.roles, 'USER')}">User</option>
                 <option value="ADMIN" th:selected="${#lists.contains(user.roles, 'ADMIN')}">Admin</option>
-                <option value="MANAGER" th:selected="${#lists.contains(user.roles, 'MANAGER')}">Manager</option>
+                <option value="MANAGER" th:selected="${#lists.contains(user.roles, 'ACOMODADOR')}">Manager</option>
                 <option value="COORDINATOR" th:selected="${#lists.contains(user.roles, 'COORDINATOR')}">Coordinator</option>
             </select>
             <input type="hidden" id="rolesHidden" th:field="*{roles}" required>

@@ -2,6 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Edit Parking Register</title>
+    <script>
+        const validateTimeInput = event => {
+            const value = event.target.value;
+            const regex = /^(2[0-3]|[01]?[0-9])$/;
+            if (!regex.test(value)) {
+            event.target.setCustomValidity('Ingresa una hora valida (0-23)');
+            } else {
+            event.target.setCustomValidity('');
+            }
+        };
+    </script>
 </head>
 <body>
     <h1>Edit Parking Register</h1>

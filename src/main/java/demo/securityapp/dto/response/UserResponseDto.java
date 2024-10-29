@@ -11,7 +11,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserResponseDto {
-    private String email;
+
     private String username;
     private Set<RoleEntity> roles;
 

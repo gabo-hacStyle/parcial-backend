@@ -31,7 +31,7 @@ public class UserEntityServices {
     public List<UserResponseDto> getAllUsers(){
         List<UserEntity>  users = userRepository.findAll();
         return users.stream()
-                .map(user -> new UserResponseDto(user.getEmail(), user.getUsername(), user.getRoles()))
+                .map(user -> new UserResponseDto( user.getUsername(), user.getRoles()))
                 .collect(Collectors.toList());
     }
 
@@ -42,7 +42,7 @@ public class UserEntityServices {
         if(user == null){
             return null;
         }
-        return new UserResponseDto(user.getEmail(), user.getUsername(), user.getRoles());
+        return new UserResponseDto( user.getUsername(), user.getRoles());
     }
 
 
@@ -53,7 +53,7 @@ public class UserEntityServices {
                         .orElseGet(() -> roleRepository.save(RoleEntity.builder().name(roleName).build())))
                 .collect(Collectors.toSet());
         UserEntity userEntity = UserEntity.builder()
-                .email(createUserDTO.getEmail())
+
                 .username(createUserDTO.getUsername())
                 .password(passwordEncoder.encode(createUserDTO.getPassword()))
                 .roles(roles)
@@ -71,7 +71,7 @@ public class UserEntityServices {
             return null;
         }
         user.setUsername(createUserDTO.getUsername());
-        user.setEmail(createUserDTO.getEmail());
+
         user.setPassword(createUserDTO.getPassword());
         Set<RoleEntity> roles = createUserDTO.getRoles()
                 .stream()
