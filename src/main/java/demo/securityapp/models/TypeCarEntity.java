@@ -17,6 +17,7 @@ public class TypeCarEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_tipo_carro")
     private Long id;
     private String name;
 

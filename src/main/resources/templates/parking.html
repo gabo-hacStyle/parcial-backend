@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Parking Registers</title>
+</head>
+<body>
+    <h1>Registro del parqueadero</h1>
+
+
+    <a href="/parking/staff/parking">Pagina de autorizados</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Placa</th>
+                <th>Ubicación</th>
+                <th>Fecha de Registro</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="register : ${parking}">
+                <td th:text="${register.placa}">Placa</td>
+                <td th:text="${register.ubicacion}">Ubicación</td>
+                <td th:text="${register.fechaRegistro}">Fecha de Registro</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

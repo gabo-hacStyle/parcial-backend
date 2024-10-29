@@ -23,7 +23,7 @@ public class ParkingRegisterServices {
     }
 
     public CreateRegistroCarroDTO getParkingRegisterByPlaca(String placa){
-        ParkingRegistros registro = parkingRegistrosRepository.findByPlaca(placa);
+        ParkingRegistros registro = parkingRegistrosRepository.findByPlaca(placa).orElse(null);
 
         return new CreateRegistroCarroDTO(registro.getPlaca(), registro.getFechaEntrada(), registro.getFechaSalida(), registro.getUbicacion(), registro.getTypeCarEntity());
     }
@@ -38,7 +38,7 @@ public class ParkingRegisterServices {
     }
 
     public ParkingRegistros updateParkingRegisterAll(String placa, CreateRegistroCarroDTO createRegistroCarroDTO){
-        ParkingRegistros registro = parkingRegistrosRepository.findByPlaca(placa);
+        ParkingRegistros registro = parkingRegistrosRepository.findByPlaca(placa).orElse(null);
 
         registro.setPlaca(createRegistroCarroDTO.getPlaca());
         registro.setFechaEntrada(createRegistroCarroDTO.getFechaEntrada());
@@ -49,9 +49,13 @@ public class ParkingRegisterServices {
     }
 
     public ParkingRegistros updateParkingRegisterUbicacion(String placa, String ubicacion){
-        ParkingRegistros registro = parkingRegistrosRepository.findByPlaca(placa);
+        ParkingRegistros registro = parkingRegistrosRepository.findByPlaca(placa).orElse(null);
         registro.setUbicacion(ubicacion);
         return parkingRegistrosRepository.save(registro);
+    }
+
+    public void deleteParkingRegister(String placa){
+        parkingRegistrosRepository.findByPlaca(placa).ifPresent(carRegistro -> parkingRegistrosRepository.delete(carRegistro));
     }
 
 

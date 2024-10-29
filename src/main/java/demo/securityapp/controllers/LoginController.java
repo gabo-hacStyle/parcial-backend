@@ -25,6 +25,13 @@ public class LoginController {
     @PostMapping("/perform_login")
     public String performLogin() {
         // Spring Security will handle the login process
-        return "redirect:/hello";
+        return "redirect:/parking";
     }
+
+    //Logout
+    @GetMapping("/logout")
+    public String logout() {
+        return "redirect:/login?logout";
+    }
+
 }

@@ -24,18 +24,14 @@ public class SecurityConfig {
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests(auth -> {
-                    auth.requestMatchers("/user/update").hasAnyRole("ADMIN", "MANAGER");
-                    auth.requestMatchers("/users/edit/").hasAnyRole("ADMIN", "MANAGER");
-                    auth.requestMatchers("/user/create").hasAnyRole("ADMIN", "MANAGER", "COORDINATOR");
-                    auth.requestMatchers("/users/save/").hasAnyRole("ADMIN", "MANAGER", "COORDINATOR");
-                    auth.requestMatchers("/users/delete/").hasRole("ADMIN");
+
                     auth.anyRequest().authenticated();
 
                 })
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/perform_login")
-                        .defaultSuccessUrl("/hello", true)
+                        .defaultSuccessUrl("/parking", true)
                         .failureUrl("/login?error=true")
                         .permitAll()
                 )

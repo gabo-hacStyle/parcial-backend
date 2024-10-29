@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Ubicacion</title>
+</head>
+<body>
+    <h1>Edit Ubicacion</h1>
+    <form th:action="@{/parking/update/ubicacion/{placa}(placa=${parking.placa})}" th:object="${parking}" method="post">
+        <div>
+            <label for="placa">Placa:</label>
+            <input type="text" id="placa" th:value="${placa}" readonly />
+        </div>
+        <div>
+            <label for="ubicacion">Ubicacion:</label>
+            <input type="text" id="ubicacion" name="ubicacion" th:value="${ubicacion}" required />
+        </div>
+        <div>
+            <button type="submit">Update</button>
+        </div>
+    </form>
+</body>
+</html>

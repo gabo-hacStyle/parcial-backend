@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Parking Registers</title>
+</head>
+<body>
+<h1>Registro del parqueadero</h1>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>Placa</th>
+        <th>Ubicación</th>
+        <th>Fecha de Registro</th>
+        <th>Acciones</th>
+        <th:block th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+            <th>Eliminar</th>
+        </th:block>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="register : ${parking}">
+        <td th:text="${register.placa}">Placa</td>
+        <td th:text="${register.ubicacion}">Ubicación</td>
+        <td th:text="${register.fechaRegistro}">Fecha de Registro</td>
+        <td>
+            <a th:href="@{'/parking/edit/all' + ${register.placa}}">Editar Todo</a>
+            <a th:href="@{'/parking/edit/ubicacion/' + ${register.placa}}">Editar Ubicación</a>
+
+
+
+        </td>
+        <td><a th:href="@{/parking/delete/{placa}(placa=${register.placa})}">Eliminar</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

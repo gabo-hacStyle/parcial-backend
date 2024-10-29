@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CreateRegistroCarroDTO {
     private String placa;
-    private String fechaEntrada;
-    private String fechaSalida;
+    private Long fechaEntrada;
+    private Long fechaSalida;
     private String ubicacion;
     private TypeCarEntity typeCarEntity;
 }

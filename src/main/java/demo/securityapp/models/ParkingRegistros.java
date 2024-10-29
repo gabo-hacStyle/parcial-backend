@@ -18,8 +18,8 @@ public class ParkingRegistros {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String placa;
-    private String fechaEntrada;
-    private String fechaSalida;
+    private Long fechaEntrada;
+    private Long fechaSalida;
     private String ubicacion;
 
     @ManyToOne
