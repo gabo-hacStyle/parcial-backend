@@ -9,3 +9,9 @@ INSERT INTO roles (name) VALUES ('ACOMODADOR');
 
 -- Asignar roles a los usuarios
 INSERT INTO user_roles (user_id, role_id) VALUES (1, 1); -- Asignar ROLE_ADMIN al usuario admin
+
+--Asignar tipos de carro
+INSERT INTO tipo_carro (nombre) VALUES ('Sedan');
+INSERT INTO tipo_carro (nombre) VALUES ('Chevrolet');
+INSERT INTO tipo_carro (nombre) VALUES ('Kia');
+INSERT INTO tipo_carro (nombre) VALUES ('Tesla');

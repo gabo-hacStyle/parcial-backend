@@ -14,7 +14,8 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("Aplicacion web de Gestión de un parqueadero")
                         .version("1.0.0")
-                        .description("Esta WebApp permite gestionar registros de un parqueadero, incluyendo creación, actualización y eliminación de registros.")
+                        .description("Esta WebApp permite gestionar registros de un parqueadero, incluyendo creación, actualización y eliminación de registros." +
+                                "Con el usuario admin contraseña 12345 entrar a la app. A /users/ para crear mas usuarios y poder usar la aplicacion")
                         .termsOfService("http://algo.com/terminos")
                         .contact(new io.swagger.v3.oas.models.info.Contact()
                                 .name("Gabriel Fajardo")
