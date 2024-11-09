@@ -8,10 +8,7 @@
 <h1>Edit User</h1>
 <form th:action="@{/users/update/{username}(username=${user.username})}" th:object="${user}" method="post">
     <input type="hidden" th:field="*{username}" />
-    <div>
-        <label for="email">Email:</label>
-        <input type="text" id="email" th:field="*{email}" />
-    </div>
+
 
     <div>
 

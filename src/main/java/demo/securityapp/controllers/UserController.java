@@ -7,6 +7,7 @@ import demo.securityapp.services.UserEntityServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,7 @@ public class UserController {
 
     @GetMapping
     @Operation(summary = "Mostrar todos los usuarios", description = "Muestra todos los usuarios")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public String showAllUsers(Model model){
         model.addAttribute("users", userEntityServices.getAllUsers());
         return "users";
@@ -30,6 +32,7 @@ public class UserController {
 
     @Operation(summary = "Crear usuario", description = "Muestra el formulario para crear un usuario.")
     @GetMapping("/create")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public String showCreateUserForm(Model model) {
         model.addAttribute("createUserDTO", new CreateUserDTO());
         return "createUser";
@@ -37,6 +40,7 @@ public class UserController {
 
     @PostMapping("/save")
     @Operation(summary = "Guardar usuario", description = "Guarda un usuario.")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public String saveUser(@ModelAttribute CreateUserDTO createUserDTO){
         userEntityServices.saveUser(createUserDTO);
         return "redirect:/users";
@@ -44,6 +48,7 @@ public class UserController {
 
     @GetMapping("/edit/{username}")
     @Operation(summary = "Editar usuario", description = "Muestra el formulario para editar un usuario.")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public String showEditUserForm(@PathVariable String username, Model model){
         UserResponseDto user = userEntityServices.getUserByUsername(username);
         model.addAttribute("user", user);
@@ -52,6 +57,7 @@ public class UserController {
 
     @PostMapping("/update/{username}")
     @Operation(summary = "Actualizar usuario", description = "Actualiza un usuario.")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public String updateUser(@PathVariable String username, @ModelAttribute  CreateUserDTO createUserDTO){
         userEntityServices.updateUser(username, createUserDTO);
         return "redirect:/users";
@@ -59,6 +65,7 @@ public class UserController {
 
     @GetMapping("/delete/{username}")
     @Operation(summary = "Eliminar usuario", description = "Elimina un usuario.")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public String deleteUser(@PathVariable String username){
         userEntityServices.deleteUser(username);
         return "redirect:/users";
